@@ -1,0 +1,598 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="问题1：在用Hexo搭博客在执行hexo g的时候，会出现错误：ERROR Process failed: layout/.DS_Store TypeError: Cannot read 
+property &amp;#39;compile&amp;#39; of undefined 或者ERROR Process failed: layout/_partial/.DS_Store TypeError: Cann">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo的一些问题及解决办法">
+<meta property="og:url" content="http://whking.top/2016/09/28/Hexo的一些问题及解决办法/index.html">
+<meta property="og:site_name" content="Wking's blog">
+<meta property="og:description" content="问题1：在用Hexo搭博客在执行hexo g的时候，会出现错误：ERROR Process failed: layout/.DS_Store TypeError: Cannot read 
+property &amp;#39;compile&amp;#39; of undefined 或者ERROR Process failed: layout/_partial/.DS_Store TypeError: Cann">
+<meta property="og:updated_time" content="2016-10-07T10:32:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo的一些问题及解决办法">
+<meta name="twitter:description" content="问题1：在用Hexo搭博客在执行hexo g的时候，会出现错误：ERROR Process failed: layout/.DS_Store TypeError: Cannot read 
+property &amp;#39;compile&amp;#39; of undefined 或者ERROR Process failed: layout/_partial/.DS_Store TypeError: Cann">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+  <title> Hexo的一些问题及解决办法 | Wking's blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Wking's blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">生活是否永远艰辛</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Hexo的一些问题及解决办法
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-09-28T12:47:51+08:00" content="2016-09-28">
+              2016-09-28
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/28/Hexo的一些问题及解决办法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/28/Hexo的一些问题及解决办法/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>问题1</strong>：在用Hexo搭博客在执行<code>hexo g</code>的时候，会出现错误：<br><code>ERROR Process failed: layout/.DS_Store TypeError: Cannot read 
+property &#39;compile&#39; of undefined</code> 或者<code>ERROR Process failed: layout/_partial/.DS_Store TypeError: Cannot 
+read property &#39;compile&#39; of undefined</code><br><a id="more"></a><br>首先得知道<code>.DS_Store</code>是 OS X 系统生成的文件，它是用来存储这个文件夹的显示属性的 。Finder 用它记录客户定制文件夹显示方式的一种元数据文件（metadata）用于控制一个文件夹的显示属性（图标位置、视图设置等）。 但是因为在 OS X 系统中 Finder 自动隐藏它们，所以在 Mac 下交互使用这些文件是没有任何问题的。<code>.DS_Store</code>几乎存在于每个文件当中，删除它会丢失它记录的那些信息。和别人交换文件（或做网页需要上传的时候）应该把<code>.DS_Store</code>文件删除比较妥当，因为里面包含了一些不一定希望别人看见的信息（尤其是网站，通过<code>.DS_Store</code>可以知道这个目录里面所有文件的清单）。这里有代码可以禁止生成及恢复生成：</p>
+<pre><code>1.禁止 .DS_Store 生成：
+打开 Terminal 输入下面的命令并按下 enter 键运行，然后必须注销Mac并重新登陆系统才能生效。     defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE
+
+2.允许 .DS_Store 生成：
+（也是需要在 Terminal 下操作，注销重启后生效）
+defaults delete com.apple.desktopservices DSDontWriteNetworkStores
+</code></pre><p>这个对我们部署没有任何帮助，只是避免以后再出现类似的问题。现在要删除<code>.DS_Store</code>这个文件，分别在目录<code>layout</code>和<code>layout/_partial</code>下，这里的目录是<code>Hexo</code>的主题主目录前提下，比如我的是<code>next</code>主题，本来已经在<code>hexo</code>主目录下了：</p>
+<pre><code>1. 删除 layout/.DS_Store:
+cd     themes/next/layout
+rm －fr .DS_Store         ＃我的执行完了感觉没什么变化，终端里没有代码提示
+2. 删除 layout/_partial/.DS_Store:
+cd themes/next/layout/_partial/.DS_Store
+rm －fr .DS_Store 
+</code></pre><p><strong>问题2</strong>：在执行<code>hexo d</code>的时候出现<code>fatal: Not a git repository (or any of the parent directories): .git</code>的问题，导致没法发表博文。</p>
+<p>我是删除 hexo 根目录下的文件<code>.deploy_git</code>，重新<code>hexo deploy</code>，然后就好了。</p>
+<p><strong>问题3</strong>：在执行<code>hexo d</code>的时候出现<code>YAMLException: end of the stream or a document separator is expected at line x, column y</code></p>
+<p>出现这种情况，一般都是缺少空格，在:冒号之后要有空格，检查x行y列附近的冒号，其之后是否有空格。</p>
+<p><strong>问题4</strong>：以后碰到问题再说，先这样吧。<br>Unhandled rejection Error: ENOENT: no such file or directory, open ‘/Users/wking/Hexo/themes/next/layout/_scripts/schemes/.swig’</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/21/Python安装图像处理库PIL/" rel="next" title="Python 安装图像处理库 PIL">
+                <i class="fa fa-chevron-left"></i> Python 安装图像处理库 PIL
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/28/Hexo绑定域名/" rel="prev" title="Hexo绑定域名">
+                Hexo绑定域名 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/09/28/Hexo的一些问题及解决办法/"
+           data-title="Hexo的一些问题及解决办法" data-url="http://whking.top/2016/09/28/Hexo的一些问题及解决办法/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Wking" />
+          <p class="site-author-name" itemprop="name">Wking</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">Dieser Artikel hat kein Inhaltsverzeichnis</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wking</span>
+</div>
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"whking"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

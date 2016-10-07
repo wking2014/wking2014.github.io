@@ -1,0 +1,599 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="在 Python 中，安装第三方模块，是通过 setuptools 这个工具完成的。Python 有两个封装了 setuptools 的包管理工具：easy_install和pip。目前官方推荐使用pip。
+PIL(Python Imaging Library)是Python一个强大方便的图像处理库，名气也比较大。一般来说第三方库 pip 直接安装即可，所以安装 Python Imaging Li">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python 安装图像处理库 PIL">
+<meta property="og:url" content="http://whking.top/2016/09/21/Python安装图像处理库PIL/index.html">
+<meta property="og:site_name" content="Wking's blog">
+<meta property="og:description" content="在 Python 中，安装第三方模块，是通过 setuptools 这个工具完成的。Python 有两个封装了 setuptools 的包管理工具：easy_install和pip。目前官方推荐使用pip。
+PIL(Python Imaging Library)是Python一个强大方便的图像处理库，名气也比较大。一般来说第三方库 pip 直接安装即可，所以安装 Python Imaging Li">
+<meta property="og:updated_time" content="2016-09-28T13:04:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python 安装图像处理库 PIL">
+<meta name="twitter:description" content="在 Python 中，安装第三方模块，是通过 setuptools 这个工具完成的。Python 有两个封装了 setuptools 的包管理工具：easy_install和pip。目前官方推荐使用pip。
+PIL(Python Imaging Library)是Python一个强大方便的图像处理库，名气也比较大。一般来说第三方库 pip 直接安装即可，所以安装 Python Imaging Li">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+  <title> Python 安装图像处理库 PIL | Wking's blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Wking's blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">生活是否永远艰辛</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Python 安装图像处理库 PIL
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-09-21T20:24:38+08:00" content="2016-09-21">
+              2016-09-21
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/21/Python安装图像处理库PIL/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/21/Python安装图像处理库PIL/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在 Python 中，安装第三方模块，是通过 setuptools 这个工具完成的。Python 有两个封装了 setuptools 的包管理工具：<code>easy_install</code>和<code>pip</code>。目前官方推荐使用<code>pip</code>。</p>
+<p>PIL(Python Imaging Library)是Python一个强大方便的图像处理库，名气也比较大。一般来说第三方库 pip 直接安装即可，所以安装 Python Imaging Library 的命令就是：<br><code>pip install PIL</code>，但是出现了<code>Could not find a version that satisfies the requirement PIL (from versions: )
+No matching distribution found for PIL</code>错误，百度才知道 PIL 不兼容 setuptools ，而且报告的问题太多，更新太慢。</p>
+<p>Pillow 是 PIL 的一个派生分支，但如今已经发展成为比 PIL 本身更具活力的图像处理库。用<code>pip install Pillow</code>命令安装，安装完成，可以使用<code>from PIL import Image</code>就可以使用库。</p>
+<p>这里一般会碰到一个问题，比如我想打开<code>/Users/用户名/Downloads</code>目录下的名为<code>70.jpg</code>图片：</p>
+<pre><code>im = Image.open(&apos;/Users/用户名/Downloads/70.jpg &apos;)
+Traceback (most recent call last):
+      File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+     File &quot;/Library/Python/2.7/site-packages/PIL/Image.py&quot;, line 2280, in open
+            fp = builtins.open(filename, &quot;rb&quot;)
+IOError: [Errno 2] No such file or directory: &apos;/Users/用户名/Downloads/70.jpg &apos;
+</code></pre><p>后来发现都是在当前目录操作的，可以用：</p>
+<pre><code>import os
+print(os.getcwd())
+</code></pre><p>可以查看你当前目录，图片文件放在当前目录才可以，当然也可以更换当前目录，修改的命令是：<br><code>os.chdir(&#39;/Users/wking/Downloads&#39;)</code></p>
+<p>对 PIL 更多使用可以翻手册，<a href="http://pillow-cn.readthedocs.io/zh_CN/latest/handbook/tutorial.html" target="_blank" rel="external">中文版</a>；<a href="http://effbot.org/imagingbook/introduction.htm" target="_blank" rel="external">英文版</a>。</p>
+<p>参考：</p>
+<ol>
+<li><a href="http://blog.csdn.net/justheretobe/article/details/50612618" target="_blank" rel="external">python Pillow 处理图片</a></li>
+<li><a href="http://www.cnblogs.com/luoxu34/p/5389630.html" target="_blank" rel="external">[ller必读] LoveLive! 必备技能之 Python Pillow 自动处理截图</a></li>
+<li><a href="http://www.plcent.com/article/59" target="_blank" rel="external">python-pillow库PIL.Image.transform()方法详解</a></li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/20/Mac下tarball方式安装MySQL/" rel="next" title="Mac下tarball方式安装MySQL">
+                <i class="fa fa-chevron-left"></i> Mac下tarball方式安装MySQL
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/28/Hexo的一些问题及解决办法/" rel="prev" title="Hexo的一些问题及解决办法">
+                Hexo的一些问题及解决办法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/09/21/Python安装图像处理库PIL/"
+           data-title="Python 安装图像处理库 PIL" data-url="http://whking.top/2016/09/21/Python安装图像处理库PIL/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Wking" />
+          <p class="site-author-name" itemprop="name">Wking</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">Dieser Artikel hat kein Inhaltsverzeichnis</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wking</span>
+</div>
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"whking"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
